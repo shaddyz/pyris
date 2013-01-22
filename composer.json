@@ -1,0 +1,9 @@
+{
+    "autoload": {
+        "psr-0": {"Pyris": "src/"}
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.*"
+    }
+}
