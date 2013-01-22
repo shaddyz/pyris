@@ -2,6 +2,6 @@
 
 namespace Pyris\ContentType;
 
-class Content
+class Collection extends Content
 {
 }
