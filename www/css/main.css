@@ -1,0 +1,35 @@
+
+body {
+}
+
+#container {
+    width: 1000px;
+    background-color: #eee;
+    margin: 0 auto;
+    
+}
+
+#header {
+    height: 100px;
+    background-color: black;
+}
+
+#main-column {
+    width: 700px;
+    background-color: green;
+    min-height: 100px;
+    float: left;
+}
+
+#side-column {
+    float: left;
+    width: 300px;
+    background-color: red;
+    min-height: 100px;
+}
+
+#footer {
+    clear: both;
+    height: 100px;
+    background-color: blue;
+}
