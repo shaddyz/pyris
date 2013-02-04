@@ -1,35 +1,108 @@
 
+.clear {
+    clear: both
+}
+
 body {
+    font-family: sans-serif;
+    background-color: #efefef;
 }
 
 #container {
     width: 1000px;
-    background-color: #eee;
     margin: 0 auto;
     
 }
 
 #header {
-    height: 100px;
-    background-color: black;
+    color: black;
+    font-size: 39px;
+}
+
+#nav-main {
+    background-color: #555;
+    border: 1px solid #3a3a3a;
+    border-radius: 3px;
+    margin: 10px 0;
+}
+
+#nav-main a:link,
+#nav-main a:visited {
+    font-size: 14px;
+    font-weight: bold;
+    color: #eee;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+    float: left;
+    border-right: 1px solid #3a3a3a;
+}
+
+#nav-main a:first-child {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+#nav-main a:hover,
+#nav-main a:active {
+    color: white;
+    background-color: #4a4a4a;
 }
 
 #main-column {
     width: 700px;
-    background-color: green;
-    min-height: 100px;
+    min-height: 300px;
     float: left;
+}
+
+#main-column > div {
+    background-color: white;
+    color: #333;
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+#main-column > div:first-child {
+    margin-top: 0;
 }
 
 #side-column {
     float: left;
     width: 300px;
-    background-color: red;
-    min-height: 100px;
+    min-height: 300px;
 }
 
-#footer {
-    clear: both;
-    height: 100px;
-    background-color: blue;
+.new-post {
+}
+
+.new-post label {
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    color: #444;
+    margin-right: 10px;
+    display: block;
+    margin-left: 5px;
+}
+
+.new-post nav {
+    display: block;
+    float: left;
+}
+
+.new-post a {
+    display: block;
+    float: left;
+    text-decoration: none;
+    color: #444;
+    padding: 0 10px;
+    border-left: 1px solid #ccc;
+    line-height: 25px;
+}
+
+
+.new-post a:hover {
+    color: black;
 }

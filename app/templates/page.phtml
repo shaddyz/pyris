@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><?=$title?></title>
+        <link rel="stylesheet" type="text/css" href="css/main.css"/>
+        <script src="http://code.jquery.com/jquery-2.0.0b1.js"></script>
+    </head>
+    <body>
+        <div id="container">
+            <div id="header">Pyris CMS</div>
+            <nav id="nav-main">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/download">Download</a>
+                <a href="/issues">Issue Tracker</a>
+                <div class="clear"></div>
+            </nav>
+            <div id="body">
+                <div id="main-column"><?=$mainColumn?></div>
+                <div id="side-column"><?=$sideColumn?></div>
+            </div>
+        </div>
+    </body>
+</html>

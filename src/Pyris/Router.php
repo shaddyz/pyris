@@ -17,15 +17,13 @@ class Router
     public function route(\Zend\Uri\Http $uri)
     {
         $path = explode('/', $uri->getPath());
-        $pageName = $path[0];
         
-        if (!$pageName) {
-            return 'default';
-        } elseif (isset($routes[$pageName])) {
-            return $routes[$pageName];
-        } else {
-            throw new Exception(sprintf('Page not found: "%s"', $pageName));
-            exit;
+        foreach ($this->routes as $routePattern => $routePage) {
+            if (preg_match($routePattern, $path)) {
+                return preg_replace($routePattern, $routePage, $path);
+            }
         }
+        
+        return '';
     }
 }
