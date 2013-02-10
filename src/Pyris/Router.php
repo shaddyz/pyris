@@ -16,14 +16,12 @@ class Router
     
     public function route(\Zend\Uri\Http $uri)
     {
-        $path = explode('/', $uri->getPath());
-        
+        $path = $uri->getPath();
         foreach ($this->routes as $routePattern => $routePage) {
             if (preg_match($routePattern, $path)) {
                 return preg_replace($routePattern, $routePage, $path);
             }
         }
-        
-        return '';
+        return trim($path, '/');
     }
 }

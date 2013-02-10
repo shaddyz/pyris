@@ -15,9 +15,11 @@ class WebApp
         $configArray   = $configReader->fromFile($configFile);
         $this->config  = new \Zend\Config\Config($configArray);
         $this->cache   = \Zend\Cache\StorageFactory::factory($this->config->cache);
-        $mongoClient   = new \MongoClient($this->config->db->server, $this->config->db->get('options', array()));
-        $this->db      = $mongoClient->{$this->config->db->dbname};
-        
+        Db::get()->connect(
+            $this->config->db->dbname,
+            $this->config->db->server,
+            $this->config->db->get('options', array('connect' => false))
+        );
         View::$templateDirectory = $appRoot . '/templates';
     }
     
@@ -34,7 +36,7 @@ class WebApp
             $routes = json_decode($this->cache->getItem('routes'), true);
         } else {
             $routes = array();
-            foreach ($this->db->routes->find() as $route) {
+            foreach (Db::get()->routes->find() as $route) {
                 $routes[] = array();
             }
             $this->cache->setItem('routes', json_encode($routes));
@@ -42,10 +44,11 @@ class WebApp
         $router = new Router($routes);
         $uri = $request->getUri();
         $page = $router->route($uri);
-        if (!$page) {
-            $page = $this->config->defaultPage;
-        }
         $pageScript = realpath($this->appRoot . '/pages/' . $page . '.php');
+        if (!$pageScript) {
+            $defaultPage = $this->config->defaultPage;
+            $pageScript = realpath($this->appRoot . '/pages/' . $defaultPage . '.php');
+        }
         include $pageScript;
     }
 }
